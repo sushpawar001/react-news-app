@@ -2,7 +2,7 @@ import React from 'react'
 
 function NewsItem(props) {
   return (
-    <div className="mb-5 card shadow border-0" style={{ backgroundColor: "#FFFFFF" }}>
+    <div className="mb-4 card shadow border-0" style={{ backgroundColor: "#FFFFFF" }}>
       <div className="row no-gutters">
         <div className="col-md-5">
           <img src={props.article.urlToImage} className="h-100 w-100 rounded-start" style={{ objectFit: 'cover' }} alt="Article" />

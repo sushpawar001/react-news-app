@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { SearchContext } from '../Contexts/Search';
+
 
 function Navbar() {
+  const { handleSearch } = useContext(SearchContext)
   return (
     <div className="col-sm-3 col-xl-2 px-sm-2 px-0 d-flex sticky-top py-3" style={{ backgroundColor: "#000000" }}>
       <div
         className="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
 
         <Link to="/" className="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <span className="fs-5 fw-bold">Namaste<span style={{ color: "#fca311" }}>Bharat</span></span></Link>
+          <span className="fs-5 fw-bold">N<span className="d-none d-sm-inline">amaste</span><span style={{ color: "#fca311" }}>B<span className="d-none d-sm-inline">harat</span></span></span></Link>
 
         <ul className="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start"
           id="menu">
@@ -38,6 +41,11 @@ function Navbar() {
               <span className="ms-3 d-none d-sm-inline">Sports</span></Link>
           </li>
         </ul>
+        <form className="d-flex input-group" role="search" onSubmit={(e) => { e.preventDefault(); }}>
+          <input className="form-control rounded-0 rounded-start" type="search" onChange={(e) => { handleSearch(e.target.value) }} placeholder="Search" aria-label="Search" id='search' name='search' />
+          <button className="btn rounded-0 p-1 rounded-end" style={{ backgroundColor: "#fca311", color: "#000" }} type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+
       </div>
     </div>
   )
